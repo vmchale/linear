@@ -31,3 +31,11 @@ interface ProViewFunctor p => CoViewCartesian (p : Type -> Type -> Type) where
 CoViewCartesian (-.) where
   viewleft h  = lplus h lid
   viewright h = lplus lid h
+
+interface ProViewFunctor p => MonoidalView (p : Type -> Type -> Type) where
+  lpar : p a b -> p c d-> p (a, c) (b, d)
+  lempty : p () ()
+
+MonoidalView (-.) where
+  lpar = lcross
+  lempty = lid
