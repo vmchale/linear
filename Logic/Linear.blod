@@ -1,0 +1,12 @@
+-- ------------------------------------------------------------- [ Linear.blod ]
+-- Description : Linear logic in Idris
+-- Copyright   : (c) 2019 Vanessa McHale
+-- --------------------------------------------------------------------- [ EOH ]
+
+module Logic.Linear
+
+infixl 10 -.
+
+-- | This is the ⊸ from linear logic
+(-.) : Type -> Type -> Type
+(-.) a b = (1 x : a) -> b

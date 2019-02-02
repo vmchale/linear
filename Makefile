@@ -1,4 +1,4 @@
-all: linear.ipkg Linear.blod
+all: linear.ipkg Category/ViewFunctor.blod Logic/Linear.blod
 	blodwen --build linear.ipkg
 
 clean:

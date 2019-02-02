@@ -1,0 +1,16 @@
+-- -------------------------------------------------------- [ ViewFunctor.blod ]
+-- Description : Viewfunctors in Idris
+-- Copyright   : (c) 2019 Vanessa McHale
+-- --------------------------------------------------------------------- [ EOH ]
+
+module Category.ViewFunctor
+
+import Logic.Linear
+
+infixl 10 -.
+
+interface ViewFunctor (f : Type -> Type) where
+  viewmap : (a -. b) -> (f a -. f b)
+
+ViewFunctor (c -.) where
+  viewmap f = ?hole

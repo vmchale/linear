@@ -1,3 +1,3 @@
-# linear-lenses
+# linear
 
-Linear lenses for Blodwen.
+Various categorical things using linear types.
