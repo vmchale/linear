@@ -2,6 +2,8 @@
 
 Various categorical things using linear types.
 
+This is building up to linear lenses/prisms.
+
 ## Building
 
 Requires [blodwen](https://github.com/edwinb/Blodwen) to be installed.
