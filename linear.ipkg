@@ -1,4 +1,6 @@
 package linear
 
 modules = Category.ViewFunctor
+        , Category.ProViewFunctor
         , Logic.Linear
+        , Function

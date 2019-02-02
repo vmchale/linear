@@ -1,0 +1,15 @@
+-- ----------------------------------------------------- [ ProViewFunctor.blod ]
+-- Description : Proviewfunctors in Idris
+-- Copyright   : (c) 2019 Vanessa McHale
+-- --------------------------------------------------------------------- [ EOH ]
+
+module Category.ProViewFunctor
+
+import Function
+import Logic.Linear
+
+interface ProViewFunctor (p : Type -> Type -> Type) where
+  diviewmap : (a' -. a) -> (b -. b') -> p a b -> p a' b'
+
+ProViewFunctor (-.) where
+  diviewmap f g h = g .! h .! f

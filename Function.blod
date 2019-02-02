@@ -1,0 +1,18 @@
+-- ----------------------------------------------------- [ ProViewFunctor.blod ]
+-- Description : Proviewfunctors in Idris
+-- Copyright   : (c) 2019 Vanessa McHale
+-- --------------------------------------------------------------------- [ EOH ]
+
+module Function
+
+import Logic.Linear
+
+infixr 9 .!
+
+public export
+(.!) : (b -. c) -> (a -. b) -> (a -. c)
+(.!) f g x = f (g x)
+
+public export
+lid : a -. a
+lid x = x
