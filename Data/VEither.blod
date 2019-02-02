@@ -1,0 +1,13 @@
+-- ------------------------------------------------------------ [ VEither.blod ]
+-- Description : Sums for linear types
+-- Copyright   : (c) 2019 Vanessa McHale
+-- --------------------------------------------------------------------- [ EOH ]
+
+module Data.VEither
+
+import Logic.Linear
+
+public export
+data VEither : (a : Type) -> (b : Type) -> Type where
+  VLeft : a -. VEither a b
+  VRight : b -. VEither a b

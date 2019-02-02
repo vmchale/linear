@@ -5,6 +5,7 @@
 
 module Category.ProViewFunctor
 
+import Data.VEither
 import Function
 import Logic.Linear
 
@@ -24,3 +25,5 @@ ViewCartesian (-.) where
 
 -- TODO: ViewEither or Leither type
 interface ProViewFunctor p => CoViewCartesian (p : Type -> Type -> Type) where
+  viewleft : p a b -> p (VEither a c) (VEither b c)
+  viewright : p a b -> p (VEither c a) (VEither c b)
