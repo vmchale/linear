@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 # To use as a pre-commit hook:
-# ln -s perl/pre-commit .git/hooks/pre-commit
+# ln -s ../../perl/pre-commit .git/hooks/pre-commit
 
 perl -0777 -i -pe 's/```\n----.*```/```\n'"$(poly -c)"'\n```/igs' README.md
