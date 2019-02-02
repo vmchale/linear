@@ -11,3 +11,8 @@ public export
 data VEither : (a : Type) -> (b : Type) -> Type where
   VLeft : a -. VEither a b
   VRight : b -. VEither a b
+
+public export
+lplus : (a -. c) -> (b -. d) -> (VEither a b -. VEither c d)
+lplus f _ (VLeft x)  = VLeft (f x)
+lplus _ g (VRight y) = VRight (g y)
