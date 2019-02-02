@@ -7,10 +7,8 @@ module Category.ViewFunctor
 
 import Logic.Linear
 
-infixl 10 -.
-
 interface ViewFunctor (f : Type -> Type) where
   viewmap : (a -. b) -> (f a -. f b)
 
 ViewFunctor (c -.) where
-  viewmap f = ?hole
+  viewmap f g = \x => f (g x)
