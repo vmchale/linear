@@ -13,3 +13,11 @@ interface ProViewFunctor (p : Type -> Type -> Type) where
 
 ProViewFunctor (-.) where
   diviewmap f g h = g .! h .! f
+
+interface ProViewFunctor p => Cartesian (p : Type -> Type -> Type) where
+  viewfirst : p a b -> p (a, c) (b, c)
+  viewsecond : p a b -> p (c, a) (c, b)
+
+Cartesian (-.) where
+  viewfirst h = lcross h lid
+  viewsecond h = lcross lid h
