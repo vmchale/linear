@@ -1,0 +1,20 @@
+-- -------------------------------------------------------------- [ Optic.blod ]
+-- Description : Linear optics in Idris
+-- Copyright   : (c) 2019 Vanessa McHale
+-- --------------------------------------------------------------------- [ EOH ]
+
+module Optic 
+
+import Category.ProViewFunctor
+
+Optic : (Type -> Type -> Type) -> Type -> Type -> Type -> Type -> Type
+Optic p a b s t = p a b -> p s t
+
+ViewLens : Type -> Type -> Type -> Type -> Type
+ViewLens a b s t = { p : Type -> Type -> Type } -> ViewCartesian p => Optic p a b s t
+
+ViewPrism : Type -> Type -> Type -> Type -> Type
+ViewPrism a b s t = { p : Type -> Type -> Type } -> CoViewCartesian p => Optic p a b s t
+
+Traversal : Type -> Type -> Type -> Type -> Type
+Traversal a b s t = { p : Type -> Type -> Type } -> ViewCartesian p -> CoViewCartesian p -> MonoidalView p => Optic p a b s t
