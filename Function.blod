@@ -17,13 +17,13 @@ public export
 lid : a -. a
 lid x = x
 
--- this is like (&&&) from Control.Arrow?
 public export
 lcross : (a -. b) -> (c -. d) -> ((a, c) -. (b, d))
 lcross f g (x, y) = (f x, g y)
 
 -- TODO: Haskell package for this? FunList in profunctor paper
 
+public export
 data LollipopList : (a : Type) -> (b : Type) -> (t : Type) -> Type where
   ViewDone : t -. LollipopList a b  t
-  ViewMore : a -. LollipopList a b (b -. t) -> LollipopList a b t
+  ViewMore : a -. LollipopList a b (b -. t) -. LollipopList a b t
