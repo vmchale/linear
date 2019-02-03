@@ -10,6 +10,9 @@ import Category.ProViewFunctor
 Optic : (Type -> Type -> Type) -> Type -> Type -> Type -> Type -> Type
 Optic p a b s t = p a b -> p s t
 
+ViewIso : Type -> Type -> Type -> Type -> Type
+ViewIso a b s t = { p : Type -> Type -> Type } -> ProViewFunctor p => Optic p a b s t
+
 ViewLens : Type -> Type -> Type -> Type -> Type
 ViewLens a b s t = { p : Type -> Type -> Type } -> ViewCartesian p => Optic p a b s t
 
