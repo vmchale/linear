@@ -13,3 +13,6 @@ interface ViewFunctor (f : Type -> Type) where
 
 ViewFunctor (c -.) where
   viewmap f g = \x => f (g x)
+
+data ViewUpStar : (f : Type -> Type) -> (a : Type) -> (b : Type) -> Type where
+  MkViewUpStar : (a -. f b) -> ViewUpStar f a b
