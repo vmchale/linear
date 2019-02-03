@@ -9,12 +9,14 @@ import Data.VEither
 import Function
 import Logic.Linear
 
+public export
 interface ProViewFunctor (p : Type -> Type -> Type) where
   diviewmap : (a' -. a) -> (b -. b') -> p a b -> p a' b'
 
 ProViewFunctor (-.) where
   diviewmap f g h = g .! h .! f
 
+public export
 interface ProViewFunctor p => ViewCartesian (p : Type -> Type -> Type) where
   viewfirst  : p a b -> p (a, c) (b, c)
   viewsecond : p a b -> p (c, a) (c, b)
@@ -23,6 +25,7 @@ ViewCartesian (-.) where
   viewfirst h  = lcross h lid
   viewsecond h = lcross lid h
 
+public export
 interface ProViewFunctor p => CoViewCartesian (p : Type -> Type -> Type) where
   viewleft  : p a b -> p (VEither a c) (VEither b c)
   viewright : p a b -> p (VEither c a) (VEither c b)
@@ -31,6 +34,7 @@ CoViewCartesian (-.) where
   viewleft h  = lplus h lid
   viewright h = lplus lid h
 
+public export
 interface ProViewFunctor p => MonoidalView (p : Type -> Type -> Type) where
   lpar : p a b -> p c d-> p (a, c) (b, d)
   lempty : p () ()

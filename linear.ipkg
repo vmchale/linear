@@ -5,3 +5,4 @@ modules = Category.ViewFunctor
         , Logic.Linear
         , Function
         , Data.VEither
+        , Optic
