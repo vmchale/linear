@@ -23,7 +23,6 @@ ViewCartesian (-.) where
   viewfirst h  = lcross h lid
   viewsecond h = lcross lid h
 
--- TODO: ViewEither or Leither type
 interface ProViewFunctor p => CoViewCartesian (p : Type -> Type -> Type) where
   viewleft  : p a b -> p (VEither a c) (VEither b c)
   viewright : p a b -> p (VEither c a) (VEither c b)

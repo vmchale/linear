@@ -17,6 +17,7 @@ public export
 lid : a -. a
 lid x = x
 
+-- this is like (&&&) from Control.Arrow?
 public export
 lcross : (a -. b) -> (c -. d) -> ((a, c) -. (b, d))
 lcross f g (x, y) = (f x, g y)
