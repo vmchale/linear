@@ -7,17 +7,17 @@ module Optic
 
 import Category.ProViewFunctor
 
-Optic : (Type -> Type -> Type) -> Type -> Type -> Type -> Type -> Type
-Optic p a b s t = p a b -> p s t
+ViewOptic : (Type -> Type -> Type) -> Type -> Type -> Type -> Type -> Type
+ViewOptic p a b s t = p a b -> p s t
 
 ViewIso : Type -> Type -> Type -> Type -> Type
-ViewIso a b s t = { p : Type -> Type -> Type } -> ProViewFunctor p => Optic p a b s t
+ViewIso a b s t = { p : Type -> Type -> Type } -> ProViewFunctor p => ViewOptic p a b s t
 
 ViewLens : Type -> Type -> Type -> Type -> Type
-ViewLens a b s t = { p : Type -> Type -> Type } -> ViewCartesian p => Optic p a b s t
+ViewLens a b s t = { p : Type -> Type -> Type } -> ViewCartesian p => ViewOptic p a b s t
 
 ViewPrism : Type -> Type -> Type -> Type -> Type
-ViewPrism a b s t = { p : Type -> Type -> Type } -> CoViewCartesian p => Optic p a b s t
+ViewPrism a b s t = { p : Type -> Type -> Type } -> CoViewCartesian p => ViewOptic p a b s t
 
-Traversal : Type -> Type -> Type -> Type -> Type
-Traversal a b s t = { p : Type -> Type -> Type } -> ViewCartesian p -> CoViewCartesian p -> MonoidalView p => Optic p a b s t
+ViewTraversal : Type -> Type -> Type -> Type -> Type
+ViewTraversal a b s t = { p : Type -> Type -> Type } -> ViewCartesian p -> CoViewCartesian p -> MonoidalView p => ViewOptic p a b s t
