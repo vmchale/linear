@@ -25,5 +25,5 @@ lcross f g (x, y) = (f x, g y)
 
 public export
 data LollipopList : (a : Type) -> (b : Type) -> (t : Type) -> Type where
-  ViewDone : t -. LollipopList a b  t
+  ViewDone : t -. LollipopList a b t
   ViewMore : a -. LollipopList a b (b -. t) -. LollipopList a b t

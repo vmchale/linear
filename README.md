@@ -2,7 +2,9 @@
 
 Profunctor optics for linear types.
 
-Loosely based on a paper of Pickering, Gibbons, and Wu.
+Loosely based on
+a [paper](https://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/poptics.pdf)
+of Pickering, Gibbons, and Wu.
 
 ## Building
 
