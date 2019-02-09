@@ -16,3 +16,8 @@ public export
 lplus : (a -. c) -> (b -. d) -> (VEither a b -. VEither c d)
 lplus f _ (VLeft x)  = VLeft (f x)
 lplus _ g (VRight y) = VRight (g y)
+
+public export
+leither : (a -. c) -> (b -. c) -> (VEither a b -. c)
+leither f g (VLeft x)  = f x
+leither f g (VRight y) = g y
