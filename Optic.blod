@@ -3,7 +3,7 @@
 -- Copyright   : (c) 2019 Vanessa McHale
 -- --------------------------------------------------------------------- [ EOH ]
 
-module Optic 
+module Optic
 
 import Category.ProViewFunctor
 import Function
@@ -24,5 +24,11 @@ ViewPrism a b s t = { p : Type -> Type -> Type } -> CoViewCartesian p => ViewOpt
 ViewTraversal : Type -> Type -> Type -> Type -> Type
 ViewTraversal a b s t = { p : Type -> Type -> Type } -> ViewCartesian p -> CoViewCartesian p -> MonoidalView p => ViewOptic p a b s t
 
-mkIso : (s -. a) -> (b -. t) -> ViewIso a b s t
-mkIso from to = diviewmap from to
+data ViewIsoC : (a : Type) -> (b : Type) -> (s : Type) -> (t : Type) -> Type where
+  MkIso : (s -. a) -> (b -. t) -> ViewIsoC a b s t
+
+ProViewFunctor (ViewIsoC a b) where
+  diviewmap f g (MkIso o i) = MkIso (o .! f) (g .! i)
+
+mkAbstract : ViewIsoC a b s t -> ViewIso a b s t
+mkAbstract (MkIso from to) = diviewmap from to
