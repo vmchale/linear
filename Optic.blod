@@ -24,8 +24,5 @@ ViewPrism a b s t = { p : Type -> Type -> Type } -> CoViewCartesian p => ViewOpt
 ViewTraversal : Type -> Type -> Type -> Type -> Type
 ViewTraversal a b s t = { p : Type -> Type -> Type } -> ViewCartesian p -> CoViewCartesian p -> MonoidalView p => ViewOptic p a b s t
 
-data ViewConcreteLens : (a : Type) -> (b : Type) -> (s : Type) -> (t : Type) -> Type where
-  MkConcrete : (s -. a) -> ((b, s) -. t) -> ViewConcreteLens a b s t
-
 mkIso : (s -. a) -> (b -. t) -> ViewIso a b s t
 mkIso from to = diviewmap from to
